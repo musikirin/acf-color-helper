@@ -143,37 +143,41 @@ class ACF_Color
     /**
      * 乗算したHEXカラーコードを返す。
      * Return multipled HEX color code.
-     * @param $value
+     * @param $hex
      * @return string
      */
-    function get_multiply_hex($value)
+    function get_multiply_hex($hex)
     {
-        $b = $this->color_multiply($value);
+        $b = $this->color_multiply($hex);
         return $this->array_rgb2hex($b);
     }
 
     /**
      * 乗算したHEXカラーコードを返してprint
      * Print Multipiled HEX color code.
-     * @param $value
+     * @param $hex
      * @return string
      */
-    function the_multiply_hex($value)
+    function the_multiply_hex($hex)
     {
-        return print $this->get_multiply_hex($value);
+        return print $this->get_multiply_hex($hex);
     }
 
     /**
      * 色から最適な文字色を返す。
      * Return best text color by Judgement whether constructed color was dark or light.
+     * @param $dark : Return color when argument's color was dark.
+     * @param $light : Opposite.
      * @return string
      */
-    function get_text_hex()
+    function get_text_hex($dark = '#ffffff', $light = '#000000')
     {
         if ($this->isDark) {
-            return "#ffffff";
+            // When color was dark. Return this.
+            return $dark;
         } else {
-            return "#000000";
+            // When color was light. Return this.
+            return $light;
         }
     }
 
