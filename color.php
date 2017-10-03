@@ -14,6 +14,8 @@ class ACF_Color
     function __construct($_color_code)
     {
         $this->brightMod = array(
+            // Brightness coefficient of each primary colors when calculate best text color.
+            // テキストカラーを算出するときの各原色にかかる係数。
             'r' => 0.15,
             'g' => 1,
             'b' => 0.5
