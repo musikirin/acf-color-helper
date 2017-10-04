@@ -22,3 +22,12 @@ $primary = new Color(<?php the_field('primary'; ?>);
  color:<?php $primary->the_text_hex(); ?>
 }
 ```
+You can get easy darker background color and get good text color judged by argument color. 
+
+## FUNCTION
+This class was designed to be used like Advanced Custom Field.
+If you need 'return value', use 'get_' functions.
+If you just need print values, use 'the_' functions.
+
+## TODO
+- multiply関数がRGBの数値でなくHSBで計算するように > 現状(200,50,50) * 2 = (255,100,100)のような大きな乗算だとバランスが崩れる。
