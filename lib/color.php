@@ -6,11 +6,11 @@ namespace Musikirin\ACF_Helper;
  */
 
 /**
- * Class ACF_Color
+ * Class Color
  * @package Musikirin\ACF_Helper
  * @author musikirin <main@musikirin.com>
  */
-class ACF_Color
+class Color
 {
 
     /**
