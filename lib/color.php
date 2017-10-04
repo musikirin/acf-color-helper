@@ -1,4 +1,5 @@
 <?php
+namespace Musikirin\ACF_Helper;
 /**
  * Advanced Custom Field"s Color Picker helper.
  * @author musikirin <main@musikirin.com>
@@ -6,7 +7,7 @@
 
 /**
  * Class ACF_Color
- *
+ * @package Musikirin\ACF_Helper
  * @author musikirin <main@musikirin.com>
  */
 class ACF_Color
