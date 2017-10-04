@@ -1,25 +1,35 @@
 <?php
+/**
+ * Advanced Custom Field"s Color Picker helper.
+ * @author musikirin <main@musikirin.com>
+ */
 
 /**
  * Class ACF_Color
- * When you use Advanced Custom Field's Color Picker, you should define Color Style in HTML Head.
- * This class help for defining color style like a SASS at head.
+ *
+ * @author musikirin <main@musikirin.com>
  */
 class ACF_Color
 {
+
+    /**
+     * Brightness coefficient of each primary colors when calculate best text color.
+     * テキストカラーを算出するときの各原色にかかる係数。
+     * 
+     * @var array
+     */
+    private $brightMod = array(
+    'r' => 0.15,
+    'g' => 1,
+    'b' => 0.5
+    );
+
     /**
      * YAHelper Color constructor.
      * @param $_color_code
      */
     function __construct($_color_code)
     {
-        $this->brightMod = array(
-            // Brightness coefficient of each primary colors when calculate best text color.
-            // テキストカラーを算出するときの各原色にかかる係数。
-            'r' => 0.15,
-            'g' => 1,
-            'b' => 0.5
-        );
         $this->rgb = $this->rgb_array($_color_code);
         $this->r = $this->rgb[0];
         $this->g = $this->rgb[1];
@@ -31,7 +41,7 @@ class ACF_Color
     /**
      * Return array(R,G,B)
      * 16進数のカラーコードからRGBの配列に変換
-     * @return array
+     * @return array $c array(R,G,B)形式のRGB値
      */
     private function rgb_array($hex)
     {
@@ -57,6 +67,9 @@ class ACF_Color
     /**
      * Multiple to array(R,G,B). Multipiled value will fixed by from 0 to 255.
      * array(R,G,B)に対して乗算をし、0〜255の範囲に修正する。
+     *
+     * @param $value
+     * @return array array(R,G,B)に乗算したarray.
      */
     private function color_multiply($value)
     {
@@ -80,7 +93,8 @@ class ACF_Color
     /**
      * HEXカラーコードをそのまま出力
      * Return HEX Color code.
-     * @return mixed
+     *
+     * @return string HEX color code like a "#ffffff".
      */
     function get_hex()
     {
@@ -90,7 +104,7 @@ class ACF_Color
     /**
      * HEXカラーコードをprint出力
      * Print out HEX color code.
-     * @return mixed
+     * @return string
      */
     function the_hex()
     {
@@ -120,7 +134,7 @@ class ACF_Color
     /**
      * 乗算したrgb(i,i,i)を返す。
      * Return multipled RGB array.
-     * @param $value
+     * @param $value array[int]
      * @return string
      */
     function get_multiply_rgb($value)
@@ -142,7 +156,7 @@ class ACF_Color
 
     /**
      * 乗算したHEXカラーコードを返す。
-     * Return multipled HEX color code.
+     * This function returns multipled HEX color code.
      * @param $hex
      * @return string
      */
@@ -154,7 +168,7 @@ class ACF_Color
 
     /**
      * 乗算したHEXカラーコードを返してprint
-     * Print Multipiled HEX color code.
+     * This function prints Multipiled HEX color code.
      * @param $hex
      * @return string
      */
@@ -165,7 +179,7 @@ class ACF_Color
 
     /**
      * 色から最適な文字色を返す。
-     * Return best text color by Judgement whether constructed color was dark or light.
+     * Function returns best text color by Judgement whether constructed color was dark or light.
      * @param $dark : Return color when argument's color was dark.
      * @param $light : Opposite.
      * @return string
@@ -183,7 +197,7 @@ class ACF_Color
 
     /**
      * 最適な文字色をprint
-     * Print best text color by HEX color code.
+     * Function returns best text color by HEX color code.
      */
     function the_text_hex()
     {

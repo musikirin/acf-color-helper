@@ -7,3 +7,5 @@
 *.iml
 out
 gen
+/docs/phpdoc-cache-2e/
+/docs/phpdoc-cache-47/
