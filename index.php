@@ -1,6 +1,8 @@
 <?php
-require_once('./color.php');
-use YAWP\Color as Color;
+require_once('./lib/color.php');
+use Musikirin\ACF_Helper\Color as Color;
+
+// Random Generator for debug.
 function randomHex(){
     return sprintf("%02x",mt_rand()%256);
 }
@@ -17,25 +19,31 @@ function applyColor(){
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <style>
         <?php
         $a = range(0,300);
         $colorArray = array_map("applyColor", $a);
         $i = 0;
-        foreach($colorArray as $c){
-            print ".c{$i} {\n";
-            print "display:inline-block;";
-            print "background: {$c->get_hex()};\n";
-            print "color: {$c->get_text_hex()};\n";
-            print "padding:5px;";
-            print "margin:5px;";
-            print "}\n";
-            $i += 1;
-        }
         ?>
+        <style>
+            <?php
+            foreach($colorArray as $c):
+            ?>
+            .c<?php echo $i; ?> {
+                display:inline-block;
+                background: <?php $c->the_hex(); ?>;
+                color: <?php $c->the_text_hex(); ?>;
+                padding:5px;
+                margin:5px;
+            }
+            <?php
+                $i += 1;
+                endforeach;
+            ?>
     </style>
 </head>
 <body>
+
+<h2>文字色取得関数のテスト</h2>
 <?php
 $i = 0;
 foreach($colorArray as $c){
